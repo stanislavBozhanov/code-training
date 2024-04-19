@@ -1,3 +1,17 @@
+# Starting the project
+
+Install lastest LTS Node version which is 20.11.1
+Preferably use NVM program to manage node versions
+Install yarn globally
+
+## 1. Go in the main folder where package.json file is
+
+## 2. Run `yarn` command which will install all the dependances
+
+## 3. Run `yarn dev` to run the project
+
+## Project should run on `http://localhost:5173/`
+
 # JavaScript Array Practice Problems
 
 Improve your skills with JavaScript array methods such as `map`, `filter`, and `reduce` by solving the following problems:
