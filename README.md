@@ -55,3 +55,18 @@ Improve your skills with JavaScript array methods such as `map`, `filter`, and `
 ## 10. Aggregate Properties
 
 **Problem**: For an array of objects `[{points: 85}, {points: 92}, {points: 88}, {points: 90}]`, use `reduce` to calculate the average score.
+
+# Part Two
+
+## 1. Display a card from the list
+
+**Problem**: Create an react component `cardDisplay.jsx` that will import the `cardData` from `data/data.js` and display the picture of the card.
+
+## 2. Display all cards from the list in a line
+
+**Problem**: Create an react component `allCardDisplay.jsx` that will import the `cardData` from `data/data.js` and display the pictures of all card in a row with some spacing between them.
+
+## 3. Make a page /card/<card code> that will open a page with the specific card
+
+**Problem**: Create an react component `cardCode.jsx` that will import the `cardData` from `data/data.js` and display the pictures of the card that was passed in the url as the cardCode.
+You will see inside the data for all card in `data.data.js` each card has a code. Use the code from the URL for example `/card/5S` search for that card in the data and display its picture
