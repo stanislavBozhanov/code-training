@@ -6,6 +6,8 @@
 
 //3. Display the result in the component's JSX (use json stringify method).
 
+import { useState, useEffect } from "react";
+
 function PartOne() {
   const task1Data = ['alice', 'bob', 'charlie', 'david'];
   const task2Data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -27,21 +29,101 @@ function PartOne() {
   ];
   const task10Data = [{ points: 85 }, { points: 92 }, { points: 88 }, { points: 90 }];
 
+  const [result1, setResult1] = useState (task1Data);
+  const [result2, setResult2] = useState (task2Data);
+  const [sumOfNumbers, setSumOfNumbers] = useState (0);
+  const [peopleArr, setPeopleArr] = useState ([]);
+  const [maxNumber, setMaxNumber] = useState(0);
+  const [fruitsArray, setFruitsArray] = useState(task6Data);
+  const [countApples, setCountApples] = useState(0);
+  const [multiValue, setMultiValue] = useState(task8Data);
+  const [filteredObjects, setFilteredObjects] = useState(task9Data);
+  const [averageScore, setAverageScore] = useState(0);
+
+  const capitalizeFirstLetterName = () => {
+    setResult1(result1.map(name => name[0].toUpperCase() + name.substring(1)))
+  };
+
+  const filterEvenNumber = () => {
+    setResult2(result2.filter(number => number%2 == 0))
+  };
+
+  const sumOfAllNumbers = () => {
+    setSumOfNumbers(task3Data.reduce((acc, currValue) => acc + currValue))
+  };
+
+  const convertArray = () => {
+    let arr = task4Data.map((person) => `${person.name} is ${person.age} years old.`)
+    setPeopleArr (arr);
+  };
+
+  const findMaxNumber = () => {
+    setMaxNumber(
+        task5Data.reduce((max, current) => {
+          return max > current ? max : current;
+      }, task5Data[0])
+    );
+  };
+
+  const filterArray = () => {
+    const fruits = fruitsArray.filter(fruit => fruit !== 'date')
+    setFruitsArray(fruits);
+  };
+
+  const countWordApple = () => {
+    setCountApples(task7Data.reduce((count, word) => {
+      if(word === 'apple') { 
+        return count + 1;
+      } else
+       return count;
+    }, 0))
+  };
+
+  const multiValueHandler = () => {
+    setMultiValue(multiValue.map(value => value*3));
+  };
+
+  const filterObjectsHandler = () => {
+    setFilteredObjects(filteredObjects.filter(object => object.id > 2));
+  };
+
+  const averageScoreHandler = () => {
+    const totalScore = task10Data.reduce((total, score) => {
+      return total + score.points;
+    }, 0);
+
+    const averageSum = totalScore / task10Data.length
+    setAverageScore(averageSum);
+  };
+
+  useEffect(() => {
+    capitalizeFirstLetterName ();
+    filterEvenNumber();
+    sumOfAllNumbers();
+    convertArray();
+    findMaxNumber();
+    filterArray();
+    countWordApple();
+    multiValueHandler();
+    filterObjectsHandler();
+    averageScoreHandler();
+  },[]);
+
   return (
     <div>
       <h1>Part One</h1>
       <p>Part One content</p>
       <ul>
-        <li>Task 1 output: </li>
-        <li>Task 2 output: </li>
-        <li>Task 3 output: </li>
-        <li>Task 4 output: </li>
-        <li>Task 5 output: </li>
-        <li>Task 6 output: </li>
-        <li>Task 7 output: </li>
-        <li>Task 8 output: </li>
-        <li>Task 9 output: </li>
-        <li>Task 10 output: </li>
+        <li>Task 1 output: {result1.map(result => <span key={result}>{result} </span>)}</li>
+        <li>Task 2 output: {result2.map(result => <span key={result}>{result} </span>)}</li>
+        <li>Task 3 output: {sumOfNumbers}</li>
+        <li>Task 4 output: {peopleArr.map(person => <span>{person} </span>)}</li>
+        <li>Task 5 output: {maxNumber}</li>
+        <li>Task 6 output: {fruitsArray.map(fruit => <span>{fruit} </span>)}</li>
+        <li>Task 7 output: {countApples}</li>
+        <li>Task 8 output: {multiValue.map(value => <span key={value}>{value} </span>)}</li>
+        <li>Task 9 output: {filteredObjects.map(obj => <span key={obj.id}>{JSON.stringify(obj)} </span>)}</li>
+        <li>Task 10 output: {averageScore}</li>
       </ul>
     </div>
   );

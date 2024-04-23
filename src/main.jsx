@@ -5,15 +5,15 @@ import PartOne from './components/PartOne';
 import PartTwo from './components/PartTwo';
 import App from './App';
 import './index.css';
+import CardCode from './components/CardCode';
 
 const router = createBrowserRouter([
   { path: '/', element: <App /> },
   { path: '/part-one/', element: <PartOne /> },
   { path: '/part-two/', element: <PartTwo /> },
+  { path: '/part-two/card/:cardCode', element: <CardCode />}
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <RouterProvider router={router} />
 );
