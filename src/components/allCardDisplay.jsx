@@ -1,25 +1,13 @@
-import { cardData } from '../data/data';
-import { useEffect, useState } from 'react';
-
 import '../cards.css'
+import CardDisplay from './CardDisplay';
 
-function AllCardsDisplay () {
-const [cards, setCards] = useState([{}])
-
-function getAllCards () {
-    const cards = cardData.cards;
-    setCards(cards)
-}
-useEffect(getAllCards, [])
-
+function AllCardsDisplay ({ props }) {
 
     return (
-        <div className='cards'>
+        <div className='cards' key='cards'>
             <h1>Cards</h1>
-            {cards.map(card => 
-                <div className='card' key={card.code}> 
-                    <img src={card.image} alt={card.value + card.suid} /> 
-                </div>
+            {props.map(card => 
+                <CardDisplay card={card}/>
             )}
         </div>
     )

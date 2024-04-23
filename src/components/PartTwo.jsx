@@ -1,13 +1,21 @@
-import CardDisplay from "./CardDisplay";
+import { useEffect, useState } from 'react';
 import AllCardsDisplay from "./allCardDisplay"
 
-function PartTwo() {
+import { cardData } from '../data/data';
 
+function PartTwo() {
+  const [cards, setCards] = useState([])
+
+  function getAllCards () {
+      const cards = cardData.cards;
+      setCards(cards)
+  }
+  useEffect(getAllCards, [])
 
   return (
     <div>
       <h2>Part Two</h2>
-      <AllCardsDisplay />
+      <AllCardsDisplay props={cards}/>
     </div>
   );
 }

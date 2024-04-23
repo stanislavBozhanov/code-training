@@ -1,20 +1,10 @@
-import { cardData } from '../data/data';
-import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-function CardDisplay () {
-const [card, setCard] = useState({})
-
-function getCard () {
-    const card = cardData.cards[0];
-    setCard(card)
-}
-useEffect(getCard, [])
-
-
+function CardDisplay ({ card }) {
     return (
-        <div className='card'>
-            <h1>Card</h1>
-            <img src={card.image} alt="card image" />
+        <div className='card' key={card.code}> 
+            <img src={card.image}  alt={`${card.value} of ${card.suit}`} />
+            <div className='card-link' key={card.code}><Link to={`card/${card.code}`}>View More</Link></div>
         </div>
     )
 };
